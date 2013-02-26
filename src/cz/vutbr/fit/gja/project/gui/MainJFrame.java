@@ -33,14 +33,14 @@ import javax.swing.plaf.FontUIResource;
  */
 public final class MainJFrame extends javax.swing.JFrame {
 
-	/** Info state type */
-	public static final int S_INFO = 0;
-	/** Warning state type */
-	public static final int S_WARNING = 1;
-	/** Error state type */
-	public static final int S_ERROR = 2;
-	/** Loading state type */
-	public static final int S_LOADING = 3;
+    /** Info state type */
+    public static final int S_INFO = 0;
+    /** Warning state type */
+    public static final int S_WARNING = 1;
+    /** Error state type */
+    public static final int S_ERROR = 2;
+    /** Loading state type */
+    public static final int S_LOADING = 3;
     
     /** Image */
     private ImageModel image = new ImageModel();
@@ -201,70 +201,70 @@ public final class MainJFrame extends javax.swing.JFrame {
     }
     
     /**
-	 * Center frame
-	 */
-	private void centerFrame() {
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		Dimension size = getSize();
-		int x, y;
+     * Center frame
+     */
+    private void centerFrame() {
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension size = getSize();
+        int x, y;
 
-		y = screenSize.height / 2 - size.height / 2;
-		x = screenSize.width / 2 - size.width / 2;
-		setLocation(x, y);
-	}
-	
-	/**
-	 * Clear status message at the bottom of the application
-	 */
-	public void clearStatus() {
-		statusTextJLabel.setText("");
-		statusTextJLabel.setIcon(null);
-	}
+        y = screenSize.height / 2 - size.height / 2;
+        x = screenSize.width / 2 - size.width / 2;
+        setLocation(x, y);
+    }
 
-	/**
-	 * Sets info message to bottom of the application to inform user
-	 * 
-	 * @param message Message to display
-	 */
-	public void status(String message) {
-		status(message, S_INFO);
-	}
+    /**
+     * Clear status message at the bottom of the application
+     */
+    public void clearStatus() {
+        statusTextJLabel.setText("");
+        statusTextJLabel.setIcon(null);
+    }
 
-	/**
-	 * Sets status message to bottom of the application to inform user
-	 * 
-	 * @param message Message to display
-	 * @param type Type of message (one of <code>S_</code> constants)
-	 */
-	public void status(String message, int type) {
-		// set message
-		statusTextJLabel.setText(message);
-		// set icon and color
-		switch (type) {
-			case S_INFO:
-				statusTextJLabel.setForeground(Color.BLACK);
-				statusTextJLabel.setIcon(Icons.get("info", 12));
-				break;
-			case S_WARNING:
-				statusTextJLabel.setForeground(Color.RED);
-				statusTextJLabel.setIcon(Icons.get("warning", 12));
-				break;
-			case S_ERROR:
-				statusTextJLabel.setForeground(Color.RED);
-				statusTextJLabel.setIcon(Icons.get("error", 12));
-				break;
-			case S_LOADING:
-				statusTextJLabel.setForeground(Color.BLACK);
-				statusTextJLabel.setIcon(Icons.get("loading", 12));
-				break;
-		}
-	}
+    /**
+     * Sets info message to bottom of the application to inform user
+     * 
+     * @param message Message to display
+     */
+    public void status(String message) {
+        status(message, S_INFO);
+    }
 
-	/**
+    /**
+     * Sets status message to bottom of the application to inform user
+     * 
+     * @param message Message to display
+     * @param type Type of message (one of <code>S_</code> constants)
+     */
+    public void status(String message, int type) {
+        // set message
+        statusTextJLabel.setText(message);
+        // set icon and color
+        switch (type) {
+            case S_INFO:
+                statusTextJLabel.setForeground(Color.BLACK);
+                statusTextJLabel.setIcon(Icons.get("info", 12));
+                break;
+            case S_WARNING:
+                statusTextJLabel.setForeground(Color.RED);
+                statusTextJLabel.setIcon(Icons.get("warning", 12));
+                break;
+            case S_ERROR:
+                statusTextJLabel.setForeground(Color.RED);
+                statusTextJLabel.setIcon(Icons.get("error", 12));
+                break;
+            case S_LOADING:
+                statusTextJLabel.setForeground(Color.BLACK);
+                statusTextJLabel.setIcon(Icons.get("loading", 12));
+                break;
+        }
+    }
+
+    /**
      * Change look and font of application
      */
     private void setLookAndFeel() {
-		// change font
+        // change font
         FontUIResource font = new FontUIResource(new Font(Font.SANS_SERIF, Font.PLAIN, 10));
         Enumeration keys = UIManager.getDefaults().keys();
         while (keys.hasMoreElements()) {
@@ -274,11 +274,11 @@ public final class MainJFrame extends javax.swing.JFrame {
                 UIManager.put(key, font);
             }
         }
-		// change style
+        // change style
         try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (Exception ignore) {
-		}
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception ignore) {
+        }
     }
 
     /**
