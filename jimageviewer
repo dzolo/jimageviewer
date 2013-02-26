@@ -1,0 +1,33 @@
+#!/bin/bash
+################################################################################
+#
+# FIT VUT - GJA PROJECT 1 2012/2013 - Image viewer
+# (c) Ondrej Fibich <xfibic01@stud.fit.vutbr.cz>
+#
+################################################################################
+#
+# This script runs the jimageviewer program.
+#
+################################################################################
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+JAR="$DIR/dist/JImageViewer.jar"
+FILE=
+
+if [ ! -e "$JAR" ]; then
+    echo "Not builded yet, please run make command first." 1>&2
+    exit 5
+fi
+
+if [ $# -eq 1 ]; then
+    if  [ "$1" = "-h" ]; then
+        echo "usage: $0 <file>" 1>&2
+        exit 0
+    else
+     	FILE=$1
+	fi
+fi
+
+java -jar "$JAR" "$FILE"
+exit $?
+
