@@ -88,8 +88,8 @@ public class ScaleJDialog extends JDialog {
         cancelButton = new javax.swing.JButton();
 
         setTitle("Scale image");
-        setMinimumSize(new java.awt.Dimension(200, 170));
-        setPreferredSize(new java.awt.Dimension(200, 170));
+        setMinimumSize(new java.awt.Dimension(250, 190));
+        setPreferredSize(new java.awt.Dimension(250, 190));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -122,7 +122,7 @@ public class ScaleJDialog extends JDialog {
         widthJLabel.setName("widthJLabel"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(7, 4, 4, 4);
+        gridBagConstraints.insets = new java.awt.Insets(7, 12, 4, 4);
         mainJPanel.add(widthJLabel, gridBagConstraints);
 
         heightJLabel.setText("Height:");
@@ -131,7 +131,7 @@ public class ScaleJDialog extends JDialog {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
+        gridBagConstraints.insets = new java.awt.Insets(4, 12, 4, 4);
         mainJPanel.add(heightJLabel, gridBagConstraints);
 
         ratioJCheckBox.setSelected(true);
@@ -145,6 +145,7 @@ public class ScaleJDialog extends JDialog {
         mainJPanel.add(ratioJCheckBox, gridBagConstraints);
 
         widthJSpinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        widthJSpinner.setMinimumSize(new java.awt.Dimension(70, 26));
         widthJSpinner.setName("widthJSpinner"); // NOI18N
         widthJSpinner.setPreferredSize(new java.awt.Dimension(70, 26));
         widthJSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -153,11 +154,15 @@ public class ScaleJDialog extends JDialog {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(7, 5, 0, 0);
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(7, 5, 0, 5);
         mainJPanel.add(widthJSpinner, gridBagConstraints);
 
         heightJSpinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        heightJSpinner.setMinimumSize(new java.awt.Dimension(70, 26));
         heightJSpinner.setName("heightJSpinner"); // NOI18N
         heightJSpinner.setPreferredSize(new java.awt.Dimension(70, 26));
         heightJSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -168,8 +173,9 @@ public class ScaleJDialog extends JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(2, 4, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(2, 4, 0, 5);
         mainJPanel.add(heightJSpinner, gridBagConstraints);
 
         getContentPane().add(mainJPanel, java.awt.BorderLayout.CENTER);

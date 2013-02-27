@@ -265,7 +265,7 @@ public final class MainJFrame extends javax.swing.JFrame {
      */
     private void setLookAndFeel() {
         // change font
-        FontUIResource font = new FontUIResource(new Font(Font.SANS_SERIF, Font.PLAIN, 10));
+        FontUIResource font = new FontUIResource(new Font(Font.SANS_SERIF, Font.PLAIN, 12));
         Enumeration keys = UIManager.getDefaults().keys();
         while (keys.hasMoreElements()) {
             Object key = keys.nextElement();
@@ -335,6 +335,7 @@ public final class MainJFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Proto viewer");
         setIconImage(Icons.get("icon").getImage());
+        setPreferredSize(new java.awt.Dimension(800, 600));
 
         jToolBar.setRollover(true);
         jToolBar.setName("jToolBar"); // NOI18N
