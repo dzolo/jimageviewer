@@ -220,7 +220,7 @@ public class ImageModel {
      * @return array of strings that contains extensions
      */
     public String[] getPossibleExtensionForConvert() {
-        final String lname = currentImageFile.getName();
+        final String lname = currentImageFile.getName().toLowerCase();
         if (lname.endsWith(".jpg") || lname.endsWith(".jpeg")) {
             return new String[] {"png", "gif"};
         } else if (lname.endsWith(".png")) {
