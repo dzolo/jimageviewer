@@ -101,6 +101,7 @@ public final class MainJFrame extends javax.swing.JFrame {
     public void saveImage() {
         try {
             image.save();
+            updateEnabled();
             status("Image " + image.getFile().getName()
                     + " has been succesfully saved.");
         } catch (IOException ex) {
@@ -885,23 +886,23 @@ public final class MainJFrame extends javax.swing.JFrame {
      * @param evt 
      */
     private void imageSizeJMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imageSizeJMenuItemActionPerformed
-        // get scale
-        ScaleJDialog d = new ScaleJDialog(this);
-        d.setVisible(true);
-        
-        if (d.getReturnStatus() == ScaleJDialog.RET_OK) {
-            final Dimension scale = d.getScale();
-            status("Scaling image to: " + scale.getWidth()
-                    + 'x' + scale.getHeight(), S_LOADING);
-            // do the scaling
-            SwingUtilities.invokeLater(new Runnable() {
-                @Override
-                public void run() {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                // get scale
+                ScaleJDialog d = new ScaleJDialog(MainJFrame.this);
+                d.setVisible(true);
+                // confirmed?
+                if (d.getReturnStatus() == ScaleJDialog.RET_OK) {
+                    final Dimension scale = d.getScale();
+                    status("Scaling image to: " + scale.getWidth()
+                            + 'x' + scale.getHeight(), S_LOADING);
+                    // do the scaling
                     image.scale(scale.width, scale.height);
                     reloadImage();
                 }
-            });
-        }
+            }
+        });
     }//GEN-LAST:event_imageSizeJMenuItemActionPerformed
 
     /**

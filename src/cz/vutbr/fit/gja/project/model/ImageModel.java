@@ -324,7 +324,7 @@ public class ImageModel {
         }
         // check if modified
         if (!isModified() && f.equals(currentImageFile)) {
-            throw new IllegalStateException();
+            throw new IllegalStateException("File not modified");
         }
         // args
         int w = currentImage.getIconWidth();
