@@ -74,6 +74,16 @@ public class ImageModel {
     }
     
     /**
+     * Gets extension of current image
+     * 
+     * @return ext
+     */
+    private String getExt() {
+        int extStart = currentImageFile.getName().lastIndexOf('.') + 1;
+        return currentImageFile.getName().substring(extStart);
+    }
+    
+    /**
      * Sets the image as the current.
      * 
      * @param img 
@@ -254,8 +264,13 @@ public class ImageModel {
         // rotate
         int w = currentImage.getIconWidth();
         int h = currentImage.getIconHeight();
+        int t = BufferedImage.TYPE_INT_ARGB;
+        // JPG have no alpha
+        if ("jpg".equals(getExt().toLowerCase())) {
+            t = BufferedImage.TYPE_INT_RGB;
+        }
         // create buffered image from the image icon
-        BufferedImage bi = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+        BufferedImage bi = new BufferedImage(w, h, t);
         Graphics2D g2d = (Graphics2D) bi.createGraphics();
         currentImage.paintIcon(null, g2d, 0, 0);
         g2d.dispose();
@@ -303,11 +318,7 @@ public class ImageModel {
      * @throws IOException on save error
      */
     public void save() throws IOException {
-        // get current extension
-        int extStart = currentImageFile.getName().lastIndexOf('.') + 1;
-        String ext = currentImageFile.getName().substring(extStart);
-        // save
-        saveAs(currentImageFile, ext);
+        saveAs(currentImageFile, getExt());
     }
     
     /**
@@ -329,8 +340,13 @@ public class ImageModel {
         // args
         int w = currentImage.getIconWidth();
         int h = currentImage.getIconHeight();
+        int t = BufferedImage.TYPE_INT_ARGB;
+        // JPG have no alpha
+        if ("jpg".equals(ext.toLowerCase())) {
+            t = BufferedImage.TYPE_INT_RGB;
+        }
         // create buffered image from the image icon
-        BufferedImage bi = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+        BufferedImage bi = new BufferedImage(w, h, t);
         Graphics2D g2d = (Graphics2D) bi.getGraphics();
         currentImage.paintIcon(null, g2d, 0, 0);
         g2d.dispose();
